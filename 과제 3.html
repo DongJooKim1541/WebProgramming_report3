@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<script>
+			function Random(){
+				return Math.floor((Math.random()*41+60));
+			}
+			function Student(_name,_korean,_english,_math,_science){
+				this.name=_name;
+				this.korean=_korean;
+				this.english=_english;
+				this.math=_math;
+				this.science=_science;
+				
+				this.calcSum=function(){
+					var sum=this.korean+this.english+this.math+this.science;
+					return sum;
+				}
+				this.calcAvg=function(){
+					var avg=this.calcSum()/4;
+					return avg;
+				}
+				
+				this.printResult=function(){
+					return this.name+" "
+					+this.calcSum()+" "
+					+this.calcAvg()+"<br/>";
+				}
+			}
+			var students=new Array();
+			students[0] = new Student("홍길동",Random(),Random(),Random(),Random());
+			students[1] = new Student("홍길순",Random(),Random(),Random(),Random());
+			students[2] = new Student("김만두",Random(),Random(),Random(),Random());
+			students[3] = new Student("이숙종",Random(),Random(),Random(),Random());
+			students[4] = new Student("왕건",Random(),Random(),Random(),Random());
+			students[5] = new Student("고민중",Random(),Random(),Random(),Random());
+			students[6] = new Student("김태호",Random(),Random(),Random(),Random());
+			students[7] = new Student("윤정수",Random(),Random(),Random(),Random());
+			students[8] = new Student("박찬호",Random(),Random(),Random(),Random());
+			students[9] = new Student("남진",Random(),Random(),Random(),Random());
+			students.sort(
+				function (a,b){
+					return b.calcAvg()-a.calcAvg();
+				}
+			);
+			document.write("<ul>");
+			document.write("<li>이름 총점 평균</li>")
+			for(var i=0;i<students.length;i++){
+				document.write("<li>"+students[i].printResult()+"</li>");
+			}
+			document.write("</ul>");
+		</script>
+	</body>
+</html>
